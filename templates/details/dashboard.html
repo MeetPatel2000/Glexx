@@ -31,6 +31,55 @@
         border-radius: 50%;
         margin-bottom: 20px;
         background-color: #fff; /* Add your photo background here */
+        overflow: hidden;
+        position: relative;
+      }
+
+      .profile-pic img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+      }
+
+      .-label {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .-label span {
+        margin-top: 5px;
+      }
+
+      input {
+        display: none;
+      }
+
+      .hover-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hover-overlay:hover {
+        opacity: 1;
+      }
+
+      .hover-overlay span {
+        color: white;
+        margin-top: 5px;
       }
 
       .navigation-options {
@@ -77,7 +126,19 @@
     <div class="dashboard-container">
       <!-- Left Sidebar -->
       <div class="left-sidebar">
-        <div class="profile-photo"></div>
+        <label class="-label" for="file">
+          <div class="profile-photo profile-pic" id="profileContainer">
+            <img
+              src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
+              id="output"
+              width="200"
+            />
+            <div class="hover-overlay">
+              <span>Upload Profile Photo</span>
+            </div>
+          </div>
+          <input id="file" type="file" onchange="loadFile(event)" />
+        </label>
         <div class="navigation-options">
           <a href="#">About</a>
           <a href="#">Preferences</a>
@@ -92,10 +153,17 @@
       <!-- Right Content Area -->
       <div class="right-content">
         <h1>Hello {{ fname }}</h1>
-        <!-- Your content goes here -->
-
-        <!-- Signout button -->
       </div>
     </div>
+    <script>
+      var loadFile = function (event) {
+        var image = document.getElementById("output");
+        var profileContainer = document.getElementById("profileContainer");
+
+        image.src = URL.createObjectURL(event.target.files[0]);
+        profileContainer.querySelector(".hover-overlay span").innerText =
+          "Change Photo";
+      };
+    </script>
   </body>
 </html>

@@ -45,6 +45,11 @@ def signup(request):
             messages.error(request,'Password Doesnt match')
             return redirect('home')
         
+        if not username.isalnum():
+            messages.error(request,'Username must Containes Letters or numbers')
+            return redirect('home')
+        
+        
         
         myuser = User.objects.create_user(username,email,pass1)
         myuser.first_name = firstname
