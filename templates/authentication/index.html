@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLexxx</title>
+    <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+          text-align: center;
+      }
+
+      h1 {
+          color: #333;
+          margin-top: 50px;
+      }
+
+      h3 {
+          color: #007BFF;
+          margin-top: 20px;
+      }
+
+      h4 {
+          color: #555;
+      }
+
+      .alert {
+          margin: 20px auto;
+          max-width: 400px;
+          padding: 15px;
+          border-radius: 5px;
+      }
+
+      .alert-success {
+          background-color: #d4edda;
+          border-color: #c3e6cb;
+          color: #155724;
+      }
+
+      .alert button {
+          border: none;
+          padding: 5px;
+          cursor: pointer;
+          background-color: transparent;
+          color: inherit;
+      }
+
+      .signup-btn,
+      .signin-btn {
+          display: inline-block;
+          padding: 10px 20px;
+          text-decoration: none;
+          color: #FE7A36;
+          border-radius: 5px;
+          margin-top: 20px;
+      }
+
+      .signup-btn:hover,
+      .signin-btn:hover {
+          background-color: #DCF2F1;
+      }
+  </style>
+  </head>
+
+  <body>
+    {% for message in messages %}
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>Message:</strong> {{ message }}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %} 
+    <h1>Welcome to Glexx</h1>
+    {% if user.is_authenticated %}
+    <h3>Hello {{fname}}!</h3>
+    <h4>You are successfully logged in</h4>
+    <button class="signout-btn" type="submit"><a href="/signout">signout</a></button>
+    {% else %}
+    <button class="signup-btn" type="submit"><a href="/signup">signup</a></button>
+    </br>
+    </br>
+    <button class="signin-btn" type="submit"><a href="/signin">signin</a></button>
+    {% endif %}
+  </body>
+</html>

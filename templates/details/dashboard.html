@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLexxx</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .dashboard-container {
+        display: flex;
+        height: 100vh;
+      }
+
+      .left-sidebar {
+        width: 250px;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        background-color: #fff; /* Add your photo background here */
+      }
+
+      .navigation-options {
+        text-align: center;
+      }
+
+      .navigation-options a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .navigation-options a:hover {
+        background-color: #555;
+      }
+
+      .right-content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .signout-btn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .signout-btn a {
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <!-- Left Sidebar -->
+      <div class="left-sidebar">
+        <div class="profile-photo"></div>
+        <div class="navigation-options">
+          <a href="#">About</a>
+          <a href="#">Preferences</a>
+          <a href="#">Upload</a>
+          <a href="#">Settings</a>
+        </div>
+        <button class="signout-btn">
+          <a href="/signout">Sign Out</a>
+        </button>
+      </div>
+
+      <!-- Right Content Area -->
+      <div class="right-content">
+        <h1>Hello {{ fname }}</h1>
+        <!-- Your content goes here -->
+
+        <!-- Signout button -->
+      </div>
+    </div>
+  </body>
+</html>

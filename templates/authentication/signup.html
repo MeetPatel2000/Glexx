@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLexxx</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-top: 50px;
+      }
+
+      form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .signin-link {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007bff;
+      }
+
+      .signin-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% for message in messages %}
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>Message:</strong> {{ message }}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    <h1>Welcome to Glexx signup</h1>
+    <form action="/signup" method="POST">
+      {% csrf_token %}
+      <label>UserName</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username(Must be letters and/or numbers)"
+        required
+      />
+      <br />
+      <label>FirstName</label>
+      <input
+        type="text"
+        id="firstname"
+        name="firstname"
+        placeholder="FirstName(Must be letters and/or numbers)"
+        required
+      />
+      <br />
+
+      <label>LastName</label>
+      <input
+        type="text"
+        id="lastname"
+        name="lastname"
+        placeholder="LastName(Must be letters and/or numbers)"
+        required
+      />
+      <br />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email Address"
+        required
+      />
+      <br />
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="pass1"
+        name="pass1"
+        placeholder="password"
+        required
+      />
+      <br />
+
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        id="pass2"
+        name="pass2"
+        placeholder="Confirm Password"
+        required
+      />
+      <br />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
